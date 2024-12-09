@@ -3,7 +3,7 @@ H1D022062
 SHIFT C (BARU)
 
 
-STRUKTUR FOLDER
+**STRUKTUR FOLDER**
 lib/bloc
 Berisi logika untuk fitur login (logout_bloc.dart) dan produk (produk_bloc.dart).
 Mengelola komunikasi antara UI dan API.
@@ -21,9 +21,8 @@ lib/main.dart
 Titik awal aplikasi, mengatur tema dan navigasi awal aplikasi.
 
 LOGIN
-File: logout_bloc.dart
-dart
-Copy code
+logout_bloc.dart
+```
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LogoutBloc {
@@ -32,12 +31,13 @@ class LogoutBloc {
     await prefs.clear(); // Menghapus data pengguna yang tersimpan.
   }
 }
+```
 •	logout():
 o	Menggunakan SharedPreferences untuk menyimpan data sesi pengguna.
 o	Saat logout, fungsi ini membersihkan semua data tersimpan, sehingga pengguna harus login ulang.
-File: login_page.dart (potongan login UI)
-dart
-Copy code
+
+login_page.dart (potongan login UI)
+```
 ElevatedButton(
   onPressed: () async {
     final response = await LoginBloc.login(username, password);
@@ -54,14 +54,15 @@ ElevatedButton(
   },
   child: const Text('Login'),
 ),
+```
 •	Memanggil LoginBloc.login untuk autentikasi.
 •	Jika berhasil, navigasi diarahkan ke ProdukPage.
 •	Jika gagal, menampilkan pesan kesalahan dengan SnackBar.
-________________________________________
-CRUD
-File: produk_bloc.dart
-dart
-Copy code
+
+
+**CRUD**
+produk_bloc.dart
+```
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:tokokita/model/produk.dart';
@@ -88,15 +89,16 @@ class ProdukBloc {
     }
   }
 }
+```
 •	getProduks():
 o	Mengambil daftar produk dari API dengan metode GET.
 o	Mengonversi respons JSON menjadi daftar objek Produk.
 •	addProduk():
 o	Mengirim data produk baru ke API dengan metode POST.
 o	Memanfaatkan json.encode() untuk mengonversi data menjadi format JSON.
-File: produk_page.dart (potongan daftar produk)
-dart
-Copy code
+
+produk_page.dart (potongan daftar produk)
+```
 FutureBuilder<List>(
   future: ProdukBloc.getProduks(),
   builder: (context, snapshot) {
@@ -106,11 +108,11 @@ FutureBuilder<List>(
         : const Center(child: CircularProgressIndicator());
   },
 ),
+```
 •	Menggunakan FutureBuilder untuk memuat data produk secara asinkron.
 •	Menampilkan CircularProgressIndicator saat data masih dimuat.
-File: produk_form.dart
-dart
-Copy code
+produk_form.dart
+```
 ElevatedButton(
   onPressed: () async {
     Produk produk = Produk(
@@ -122,23 +124,23 @@ ElevatedButton(
   },
   child: const Text('Simpan'),
 ),
+```
 •	Membuat objek Produk dari input pengguna.
 •	Menggunakan ProdukBloc.addProduk() untuk menambahkan produk baru ke API.
 •	Menutup halaman form setelah data berhasil disimpan.
-________________________________________
-3. API
+
+**API**
 •	API untuk CRUD diimplementasikan di backend PHP:
 o	GET /api/produk: Mengambil daftar produk.
 o	POST /api/produk: Menambahkan produk baru.
 •	Contoh integrasi API:
-dart
-Copy code
+```
 final response = await http.post(
   Uri.parse('http://localhost/api/produk'),
   headers: {'Content-Type': 'application/json'},
   body: json.encode(produk.toJson()),
 );
-
+```
 
 
 
