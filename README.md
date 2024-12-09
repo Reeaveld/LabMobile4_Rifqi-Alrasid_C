@@ -4,6 +4,7 @@ H1D022062
 
 SHIFT C (BARU)
 
+# Penjelasan Code
 
 **STRUKTUR FOLDER**
 
@@ -23,7 +24,7 @@ Biasanya menyimpan fungsi utilitas atau konfigurasi, seperti helper untuk HTTP r
 lib/main.dart
 Titik awal aplikasi, mengatur tema dan navigasi awal aplikasi.
 
-LOGIN
+**LOGIN**
 
 logout_bloc.dart
 ```
