@@ -2,8 +2,8 @@ RIFQI ALRASID
 H1D022062
 SHIFT C (BARU)
 
-# Penjelasan Code
-**STRUKTUR FOLDER**
+
+STRUKTUR FOLDER
 lib/bloc
 Berisi logika untuk fitur login (logout_bloc.dart) dan produk (produk_bloc.dart).
 Mengelola komunikasi antara UI dan API.
@@ -20,7 +20,7 @@ Biasanya menyimpan fungsi utilitas atau konfigurasi, seperti helper untuk HTTP r
 lib/main.dart
 Titik awal aplikasi, mengatur tema dan navigasi awal aplikasi.
 
-**LOGIN**
+LOGIN
 File: logout_bloc.dart
 dart
 Copy code
@@ -57,8 +57,8 @@ ElevatedButton(
 •	Memanggil LoginBloc.login untuk autentikasi.
 •	Jika berhasil, navigasi diarahkan ke ProdukPage.
 •	Jika gagal, menampilkan pesan kesalahan dengan SnackBar.
-
-**CRUD**
+________________________________________
+CRUD
 File: produk_bloc.dart
 dart
 Copy code
@@ -125,8 +125,8 @@ ElevatedButton(
 •	Membuat objek Produk dari input pengguna.
 •	Menggunakan ProdukBloc.addProduk() untuk menambahkan produk baru ke API.
 •	Menutup halaman form setelah data berhasil disimpan.
-
-**API**
+________________________________________
+3. API
 •	API untuk CRUD diimplementasikan di backend PHP:
 o	GET /api/produk: Mengambil daftar produk.
 o	POST /api/produk: Menambahkan produk baru.
@@ -138,6 +138,7 @@ final response = await http.post(
   headers: {'Content-Type': 'application/json'},
   body: json.encode(produk.toJson()),
 );
+
 
 
 
