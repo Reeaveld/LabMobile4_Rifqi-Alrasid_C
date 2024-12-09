@@ -1,9 +1,12 @@
 RIFQI ALRASID
+
 H1D022062
+
 SHIFT C (BARU)
 
 
 **STRUKTUR FOLDER**
+
 lib/bloc
 Berisi logika untuk fitur login (logout_bloc.dart) dan produk (produk_bloc.dart).
 Mengelola komunikasi antara UI dan API.
@@ -21,6 +24,7 @@ lib/main.dart
 Titik awal aplikasi, mengatur tema dan navigasi awal aplikasi.
 
 LOGIN
+
 logout_bloc.dart
 ```
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,6 +36,7 @@ class LogoutBloc {
   }
 }
 ```
+
 •	logout():
 o	Menggunakan SharedPreferences untuk menyimpan data sesi pengguna.
 o	Saat logout, fungsi ini membersihkan semua data tersimpan, sehingga pengguna harus login ulang.
@@ -61,6 +66,7 @@ ElevatedButton(
 
 
 **CRUD**
+
 produk_bloc.dart
 ```
 import 'dart:convert';
@@ -90,6 +96,7 @@ class ProdukBloc {
   }
 }
 ```
+
 •	getProduks():
 o	Mengambil daftar produk dari API dengan metode GET.
 o	Mengonversi respons JSON menjadi daftar objek Produk.
@@ -109,6 +116,7 @@ FutureBuilder<List>(
   },
 ),
 ```
+
 •	Menggunakan FutureBuilder untuk memuat data produk secara asinkron.
 •	Menampilkan CircularProgressIndicator saat data masih dimuat.
 produk_form.dart
@@ -125,11 +133,13 @@ ElevatedButton(
   child: const Text('Simpan'),
 ),
 ```
+
 •	Membuat objek Produk dari input pengguna.
 •	Menggunakan ProdukBloc.addProduk() untuk menambahkan produk baru ke API.
 •	Menutup halaman form setelah data berhasil disimpan.
 
 **API**
+
 •	API untuk CRUD diimplementasikan di backend PHP:
 o	GET /api/produk: Mengambil daftar produk.
 o	POST /api/produk: Menambahkan produk baru.
